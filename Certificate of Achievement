@@ -1,0 +1,12 @@
+import { Contract, GlobalState, string } from '@algorandfoundation/algorand-typescript'
+
+export class Certificate extends Contract {
+  student = GlobalState<string>({ key: "student", initialValue: "none" })
+  award = GlobalState<string>({ key: "award", initialValue: "none" })
+
+  issueCert(name: string, award: string): string {
+    this.student.value = name
+    this.award.value = award
+    return "Certificate: " + name + " got " + award
+  }
+}
