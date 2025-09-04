@@ -1,0 +1,10 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class Health extends Contract {
+  calories = GlobalState<uint64>({ key: "calories", initialValue: 0 })
+
+  logCalories(amount: uint64): uint64 {
+    this.calories.value = this.calories.value + amount
+    return this.calories.value
+  }
+}
