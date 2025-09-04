@@ -1,0 +1,10 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class Donation extends Contract {
+  total = GlobalState<uint64>({ key: "total", initialValue: 0 })
+
+  donate(amount: uint64): string {
+    this.total.value = this.total.value + amount
+    return "donated " + amount
+  }
+}
