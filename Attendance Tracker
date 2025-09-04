@@ -1,0 +1,10 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class Attendance extends Contract {
+  present = GlobalState<uint64>({ key: "present", initialValue: 0 })
+
+  markPresent(): string {
+    this.present.value = this.present.value + 1
+    return "present count = " + this.present.value
+  }
+}
