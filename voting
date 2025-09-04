@@ -1,0 +1,16 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class Voting extends Contract {
+  yesVotes = GlobalState<uint64>({ key: "yes", initialValue: 0 })
+  noVotes = GlobalState<uint64>({ key: "no", initialValue: 0 })
+
+  voteYes(): uint64 {
+    this.yesVotes.value = this.yesVotes.value + 1
+    return this.yesVotes.value
+  }
+
+  voteNo(): uint64 {
+    this.noVotes.value = this.noVotes.value + 1
+    return this.noVotes.value
+  }
+}
