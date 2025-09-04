@@ -1,0 +1,12 @@
+import { Contract, GlobalState, string } from '@algorandfoundation/algorand-typescript'
+
+export class Warranty extends Contract {
+  product = GlobalState<string>({ key: "product", initialValue: "none" })
+  warranty = GlobalState<string>({ key: "warranty", initialValue: "none" })
+
+  issueWarranty(prod: string, duration: string): string {
+    this.product.value = prod
+    this.warranty.value = duration
+    return "Warranty for " + prod + " = " + duration
+  }
+}
