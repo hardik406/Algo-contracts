@@ -1,0 +1,15 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class Bank extends Contract {
+  balance = GlobalState<uint64>({ key: "balance", initialValue: 0 })
+
+  deposit(amount: uint64): uint64 {
+    this.balance.value = this.balance.value + amount
+    return this.balance.value
+  }
+
+  withdraw(amount: uint64): uint64 {
+    this.balance.value = this.balance.value - amount
+    return this.balance.value
+  }
+}
