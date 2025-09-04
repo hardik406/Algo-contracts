@@ -1,0 +1,10 @@
+import { Contract, GlobalState, uint64, Global } from '@algorandfoundation/algorand-typescript'
+
+export class DiceRoll extends Contract {
+  rollResult = GlobalState<uint64>({ key: "roll", initialValue: 0 })
+
+  roll(): uint64 {
+    this.rollResult.value = (Global.round % 6) + 1
+    return this.rollResult.value
+  }
+}
