@@ -1,0 +1,10 @@
+import { Contract, Global, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class HighLow extends Contract {
+  guess(choice: string): string {
+    const num = (Global.round % 10) + 1
+    if (choice === "high" && num > 5) return "win"
+    if (choice === "low" && num <= 5) return "win"
+    return "lose"
+  }
+}
