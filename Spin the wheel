@@ -1,0 +1,12 @@
+import { Contract, GlobalState, Global } from '@algorandfoundation/algorand-typescript'
+
+export class SpinWheel extends Contract {
+  reward = GlobalState<string>({ key: "reward", initialValue: "none" })
+
+  spin(): string {
+    const outcomes = ["car", "bike", "phone", "nothing"]
+    const index = Global.round % 4
+    this.reward.value = outcomes[index]
+    return this.reward.value
+  }
+}
