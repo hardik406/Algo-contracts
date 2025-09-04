@@ -1,0 +1,10 @@
+import { Contract, GlobalState } from '@algorandfoundation/algorand-typescript'
+
+export class Notes extends Contract {
+  note = GlobalState<string>({ key: "note", initialValue: "" })
+
+  addNote(newNote: string): string {
+    this.note.value = newNote
+    return this.note.value
+  }
+}
