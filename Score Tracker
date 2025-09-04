@@ -1,0 +1,10 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class ScoreTracker extends Contract {
+  score = GlobalState<uint64>({ key: "score", initialValue: 0 })
+
+  addPoints(points: uint64): uint64 {
+    this.score.value = this.score.value + points
+    return this.score.value
+  }
+}
