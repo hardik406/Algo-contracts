@@ -1,0 +1,12 @@
+import { Contract, GlobalState, string, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class Loan extends Contract {
+  borrower = GlobalState<string>({ key: "borrower", initialValue: "none" })
+  amount = GlobalState<uint64>({ key: "amount", initialValue: 0 })
+
+  giveLoan(name: string, amt: uint64): string {
+    this.borrower.value = name
+    this.amount.value = amt
+    return name + " borrowed " + amt
+  }
+}
