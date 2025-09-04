@@ -1,0 +1,9 @@
+import { Contract, GlobalState } from '@algorandfoundation/algorand-typescript'
+
+export class Quiz extends Contract {
+  answer = GlobalState<string>({ key: "ans", initialValue: "algorand" })
+
+  submit(ans: string): string {
+    return ans.toLowerCase() === this.answer.value ? "correct" : "wrong"
+  }
+}
