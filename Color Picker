@@ -1,0 +1,8 @@
+import { Contract, Global } from '@algorandfoundation/algorand-typescript'
+
+export class ColorGame extends Contract {
+  pick(color: string): string {
+    const colors = ["red", "blue", "green"]
+    return color === colors[Number(Global.round % 3)] ? "win" : "lose"
+  }
+}
