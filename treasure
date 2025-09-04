@@ -1,0 +1,9 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class TreasureHunt extends Contract {
+  treasure = GlobalState<uint64>({ key: "treasure", initialValue: 5 })
+
+  guess(location: uint64): string {
+    return location === this.treasure.value ? "found" : "keep searching"
+  }
+}
