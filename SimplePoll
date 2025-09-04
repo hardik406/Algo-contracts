@@ -1,0 +1,12 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class Poll extends Contract {
+  yes = GlobalState<uint64>({ key: "yes", initialValue: 0 })
+  no = GlobalState<uint64>({ key: "no", initialValue: 0 })
+
+  vote(choice: string): string {
+    if (choice === "yes") this.yes.value = this.yes.value + 1
+    if (choice === "no") this.no.value = this.no.value + 1
+    return "voted " + choice
+  }
+}
