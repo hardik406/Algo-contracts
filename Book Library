@@ -1,0 +1,12 @@
+import { Contract, GlobalState, string } from '@algorandfoundation/algorand-typescript'
+
+export class Library extends Contract {
+  book = GlobalState<string>({ key: "book", initialValue: "none" })
+  borrower = GlobalState<string>({ key: "borrower", initialValue: "none" })
+
+  borrowBook(title: string, name: string): string {
+    this.book.value = title
+    this.borrower.value = name
+    return name + " borrowed " + title
+  }
+}
