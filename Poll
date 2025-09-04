@@ -1,0 +1,15 @@
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class Poll extends Contract {
+  optionA = GlobalState<uint64>({ key: "A", initialValue: 0 })
+  optionB = GlobalState<uint64>({ key: "B", initialValue: 0 })
+  optionC = GlobalState<uint64>({ key: "C", initialValue: 0 })
+
+  vote(choice: string): string {
+    if (choice === "A") this.optionA.value += 1
+    else if (choice === "B") this.optionB.value += 1
+    else if (choice === "C") this.optionC.value += 1
+    else return "invalid"
+    return "vote recorded"
+  }
+}
