@@ -1,0 +1,10 @@
+import { Contract, GlobalState, string } from '@algorandfoundation/algorand-typescript'
+
+export class IdeaBox extends Contract {
+  idea = GlobalState<string>({ key: "idea", initialValue: "none" })
+
+  submit(newIdea: string): string {
+    this.idea.value = newIdea
+    return "idea submitted: " + newIdea
+  }
+}
