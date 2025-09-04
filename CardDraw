@@ -1,0 +1,8 @@
+import { Contract, Global } from '@algorandfoundation/algorand-typescript'
+
+export class CardDraw extends Contract {
+  draw(): string {
+    const suits = ["hearts", "spades", "clubs", "diamonds"]
+    return suits[Number(Global.round % 4)]
+  }
+}
