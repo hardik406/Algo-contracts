@@ -1,0 +1,10 @@
+import { Contract, GlobalState } from '@algorandfoundation/algorand-typescript'
+
+export class Quote extends Contract {
+  quote = GlobalState<string>({ key: "quote", initialValue: "Be positive!" })
+
+  setQuote(newQuote: string): string {
+    this.quote.value = newQuote
+    return this.quote.value
+  }
+}
