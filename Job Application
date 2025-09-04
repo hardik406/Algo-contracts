@@ -1,0 +1,12 @@
+import { Contract, GlobalState, string } from '@algorandfoundation/algorand-typescript'
+
+export class JobApp extends Contract {
+  applicant = GlobalState<string>({ key: "applicant", initialValue: "none" })
+  position = GlobalState<string>({ key: "position", initialValue: "none" })
+
+  apply(name: string, role: string): string {
+    this.applicant.value = name
+    this.position.value = role
+    return name + " applied for " + role
+  }
+}
