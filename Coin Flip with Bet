@@ -1,0 +1,8 @@
+import { Contract, Global } from '@algorandfoundation/algorand-typescript'
+
+export class CoinBet extends Contract {
+  flip(guess: string): string {
+    const outcome = Global.round % 2 === 0 ? "heads" : "tails"
+    return guess === outcome ? "win" : "lose"
+  }
+}
