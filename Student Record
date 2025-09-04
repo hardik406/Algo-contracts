@@ -1,0 +1,12 @@
+import { Contract, GlobalState, string, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class StudentRecord extends Contract {
+  student = GlobalState<string>({ key: "student", initialValue: "none" })
+  grade = GlobalState<uint64>({ key: "grade", initialValue: 0 })
+
+  setRecord(name: string, grade: uint64): string {
+    this.student.value = name
+    this.grade.value = grade
+    return "Record saved for " + name
+  }
+}
