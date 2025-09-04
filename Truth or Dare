@@ -1,0 +1,10 @@
+import { Contract, GlobalState, Global } from '@algorandfoundation/algorand-typescript'
+
+export class TruthOrDare extends Contract {
+  choice = GlobalState<string>({ key: "choice", initialValue: "none" })
+
+  play(): string {
+    this.choice.value = (Global.round % 2 === 0) ? "truth" : "dare"
+    return this.choice.value
+  }
+}
