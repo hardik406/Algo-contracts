@@ -1,0 +1,10 @@
+import { Contract, GlobalState, uint64, Global } from '@algorandfoundation/algorand-typescript'
+
+export class Lottery extends Contract {
+  winner = GlobalState<uint64>({ key: "winner", initialValue: 0 })
+
+  draw(players: uint64): uint64 {
+    this.winner.value = (Global.round % players) + 1
+    return this.winner.value
+  }
+}
