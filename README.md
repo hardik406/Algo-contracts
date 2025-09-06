@@ -102,6 +102,9 @@ This project makes use of Algorand TypeScript to build Algorand smart contracts.
 
 
 It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [.vscode](./.vscode) folder.
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/f357c24d-ae43-4ba6-bd17-5ab5d4c9b11e" />
+https://lora.algokit.io/testnet/application/745463853
+
 
 
 
